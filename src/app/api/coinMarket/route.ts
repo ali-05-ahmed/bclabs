@@ -1,9 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { CryptoData } from '@/components/Table/crypto-table';
+import { NextResponse } from 'next/server';
 
 const API_KEY = 'fad3c46a-34f5-408e-b9cb-720519b3cfad';
 const URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const response = await fetch(URL, {
       method: 'GET',
@@ -13,8 +14,7 @@ export async function GET(req: NextRequest) {
     });
     const data = await response.json();
 
-    // Filter the data to include only the specified cryptocurrencies
-    const filteredData = data.data.filter((crypto: any) =>
+    const filteredData = data.data.filter((crypto: CryptoData) =>
       ['BTC', 'ETH', 'DOGE', 'ALGO', 'DOT', 'UNI', 'COMP'].includes(crypto.symbol),
     );
 

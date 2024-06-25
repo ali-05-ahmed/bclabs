@@ -11,6 +11,7 @@ import UNI from '/public/Icons/uni.png';
 import COMP from '/public/Icons/comp.png';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const images = {
   BTC,
@@ -22,7 +23,7 @@ const images = {
   COMP,
 };
 
-interface CryptoData {
+export interface CryptoData {
   id: number;
   symbol: keyof typeof images;
   quote: {
@@ -34,11 +35,10 @@ interface CryptoData {
   };
 }
 
-export const fetchCryptoData = async (): Promise<CryptoData[]>  => {
+export const fetchCryptoData = async (): Promise<CryptoData[]> => {
   try {
     const response = await fetch('/api/coinMarket');
     const data = await response.json();
-    console.log(data.filteredData);
     return data.filteredData;
   } catch (error) {
     console.error('Error fetching crypto data:', error);
@@ -48,14 +48,56 @@ export const fetchCryptoData = async (): Promise<CryptoData[]>  => {
 
 export default function CryptoTable() {
   const [data, setData] = useState<CryptoData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       const data = await fetchCryptoData();
       setData(data);
+      setLoading(false);
     };
     getData();
   }, []);
+
+  if (loading) {
+    return (
+      <section className="rounded-xl border border-[#464646] bg-black/60 p-5 backdrop-blur-lg backdrop-filter">
+        <Table className="w-[800px]">
+          <TableHeader>
+            <TableRow className="border-[#464646] hover:bg-transparent">
+              <TableHead className="w-[200px] text-white">ASSETS</TableHead>
+              <TableHead className="text-white">LAST TRADE</TableHead>
+              <TableHead className="text-white">24H%</TableHead>
+              <TableHead className="text-white">24H CHANGE</TableHead>
+              <TableHead className="pr-6 text-right text-blue-600">MORE {'>'}</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {[...Array(5)].map((_, index) => (
+              <TableRow key={index}>
+                <TableCell>
+                  <Skeleton className="h-16 w-full" />
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="h-16 w-full" />
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="h-16 w-full" />
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="h-16 w-full" />
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="h-16 w-full" />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </section>
+    );
+  }
 
   return (
     <section className="rounded-xl border border-[#464646] bg-black/60 p-5 backdrop-blur-lg backdrop-filter">
