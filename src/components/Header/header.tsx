@@ -1,32 +1,30 @@
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 //
 export function SiteHeader() {
   return (
-    <header className="backdrop-blur sticky top-0 z-40 w-full h-[60px] flex justify-center items-center text-white">
-      <div className="container flex justify-between items-center w-full max-w-6xl px-4">
-        <div className="hidden sm:flex sm:flex-1 justify-start">Blockchain</div>
+    <header className="sticky top-0 z-40 flex h-[60px] w-full items-center justify-center text-white backdrop-blur">
+      <div className="container flex w-full max-w-6xl items-center justify-between px-4">
+        <div className="hidden justify-start sm:flex sm:flex-1">Blockchain</div>
         <MainNav />
         <div className="flex flex-1 justify-end">
           <nav className="flex items-center space-x-4">
             <Link
               href=""
               className={cn(
-                buttonVariants({ size: "default" }),
-                " bg-black hover:bg-black/80 text-white rounded-lg rounded-tr-none rounded-bl-none border-2 border-purple-600"
-              )}
-            >
+                buttonVariants({ size: 'default' }),
+                'rounded-lg rounded-bl-none rounded-tr-none border-2 border-purple-600 bg-black text-white hover:bg-black/80',
+              )}>
               Log IN
             </Link>
             <Link
               href=""
               className={cn(
-                buttonVariants({ size: "default" }),
-                "bg-purple-600 text-white rounded-lg rounded-tr-none rounded-bl-none hover:bg-purple-600/80"
-              )}
-            >
+                buttonVariants({ size: 'default' }),
+                'rounded-lg rounded-bl-none rounded-tr-none bg-purple-600 text-white hover:bg-purple-600/80',
+              )}>
               SIGN UP
             </Link>
           </nav>
@@ -38,7 +36,7 @@ export function SiteHeader() {
 
 export function MainNav() {
   return (
-    <nav className="flex justify-center items-center gap-6 text-">
+    <nav className="text- flex items-center justify-center gap-6">
       <Link href="/" className="">
         Exchange
       </Link>

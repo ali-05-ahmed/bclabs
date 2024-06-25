@@ -1,93 +1,99 @@
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Button } from "../ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Button } from '../ui/button';
+import BTC from '/public/Icons/btc.png';
+import ETH from '/public/Icons/eth.png';
+import DODGE from '/public/Icons/dodge.png';
+import ALGO from '/public/Icons/algo.png';
+import DOT from '/public/Icons/dot.png';
+import UNI from '/public/Icons/uni.png';
+import COMP from '/public/Icons/comp.png';
+import Image from 'next/image';
 
 const data = [
   {
-    invoice: "BTC",
-    paymentStatus: "63,000.00",
-    totalAmount: "0.00",
-    paymentMethod: "0.00",
+    name: 'BTC',
+    lastTrade: '63,000.00',
+    last24: '0.00',
+    Change24: '0.00',
+    img: BTC,
   },
   {
-    invoice: "ETH",
-    paymentStatus: "3,408.90",
-    totalAmount: "0.00",
-    paymentMethod: "0.00",
+    name: 'ETH',
+    lastTrade: '3,408.90',
+    last24: '0.00',
+    Change24: '0.00',
+    img: ETH,
   },
   {
-    invoice: "DOGDE",
-    paymentStatus: "0.15",
-    totalAmount: "0.00",
-    paymentMethod: "0.00",
+    name: 'DOGDE',
+    lastTrade: '0.15',
+    last24: '0.00',
+    Change24: '0.00',
+    img: DODGE,
   },
   {
-    invoice: "ALGO",
-    paymentStatus: "0.15",
-    totalAmount: "0.00",
-    paymentMethod: "0.00",
+    name: 'ALGO',
+    lastTrade: '0.15',
+    last24: '0.00',
+    Change24: '0.00',
+    img: ALGO,
   },
   {
-    invoice: "DOT",
-    paymentStatus: "5.64",
-    totalAmount: "0.00",
-    paymentMethod: "0.00",
+    name: 'DOT',
+    lastTrade: '5.64',
+    last24: '0.00',
+    Change24: '0.00',
+    img: DOT,
   },
   {
-    invoice: "UNI",
-    paymentStatus: "9.79",
-    totalAmount: "0.00",
-    paymentMethod: "0.00",
+    name: 'UNI',
+    lastTrade: '9.79',
+    last24: '0.00',
+    Change24: '0.00',
+    img: UNI,
   },
   {
-    invoice: "COMP",
-    paymentStatus: "45.67",
-    totalAmount: "0.00",
-    paymentMethod: "0.00",
+    name: 'COMP',
+    lastTrade: '45.67',
+    last24: '0.00',
+    Change24: '0.00',
+    img: COMP,
   },
 ];
 export default function CryptoTable() {
   return (
-    <section className="border border-[#464646] rounded-xl p-5 bg-black/60 backdrop-filter backdrop-blur-lg">
+    <section className="rounded-xl border border-[#464646] bg-black/60 p-5 backdrop-blur-lg backdrop-filter">
       <Table className="w-[800px]">
         <TableHeader>
-          <TableRow className="hover:bg-transparent border-[#464646]">
+          <TableRow className="border-[#464646] hover:bg-transparent">
             <TableHead className="w-[200px] text-white">ASSETS</TableHead>
             <TableHead className="text-white">LAST TRADE</TableHead>
             <TableHead className="text-white">24H%</TableHead>
             <TableHead className="text-white">24H CHANGE</TableHead>
-            <TableHead className="text-right pr-6 text-blue-600">
-              MORE {">"}
-            </TableHead>
+            <TableHead className="pr-6 text-right text-blue-600">MORE {'>'}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((invoice) => (
-            <TableRow
-              key={invoice.invoice}
-              className="border-none hover:bg-transparent"
-            >
-              <TableCell className="font-medium ">
-                <span className="text-white">{invoice.invoice}/</span>USD
+          {data.map((name) => (
+            <TableRow key={name.name} className="border-none hover:bg-transparent">
+              <TableCell className="flex items-center gap-1 font-medium">
+                <Image
+                  src={name.img}
+                  placeholder="blur"
+                  alt={name.name}
+                  height={1000}
+                  width={1000}
+                  className="h-16 w-16"
+                />
+                <div>
+                  <span className="text-white">{name.name}/</span>USD
+                </div>
               </TableCell>
-              <TableCell className="text-white">
-                ${invoice.paymentStatus}
-              </TableCell>
-              <TableCell>{invoice.totalAmount}%</TableCell>
-              <TableCell>{invoice.paymentMethod}%</TableCell>
-
-              <TableCell className="flex justify-end ">
-                <Button className="w-1/2 rounded-none bg-green-500 hover:bg-green-500/80 text-gray-900">
-                  TRADE
-                </Button>
+              <TableCell className="text-white">${name.lastTrade}</TableCell>
+              <TableCell>{name.last24}%</TableCell>
+              <TableCell>{name.Change24}%</TableCell>
+              <TableCell className="flex justify-end">
+                <Button className="w-1/2 rounded-none bg-green-500 text-gray-900 hover:bg-green-500/80">TRADE</Button>
               </TableCell>
             </TableRow>
           ))}
