@@ -15,7 +15,7 @@ export async function GET() {
     const data = await response.json();
 
     const filteredData = data.data.filter((crypto: CryptoData) =>
-      ['BTC', 'ETH', 'DOGE', 'ALGO', 'DOT', 'UNI', 'COMP'].includes(crypto.symbol),
+      ['BTC', 'ETH', 'DOGE', 'ALGO', 'DOT', 'UNI', 'COMP', 'BNB'].includes(crypto.symbol),
     );
 
     return NextResponse.json({ filteredData });

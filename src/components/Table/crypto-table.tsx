@@ -9,6 +9,8 @@ import ALGO from '/public/Icons/algo.png';
 import DOT from '/public/Icons/dot.png';
 import UNI from '/public/Icons/uni.png';
 import COMP from '/public/Icons/comp.png';
+import BNB from '/public/Icons/comp.png';
+
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -21,6 +23,7 @@ const images = {
   DOT,
   UNI,
   COMP,
+  BNB,
 };
 
 export interface CryptoData {
@@ -127,8 +130,27 @@ export default function CryptoTable() {
                 </div>
               </TableCell>
               <TableCell className="text-white">${crypto.quote.USD.price.toFixed(2)}</TableCell>
-              <TableCell>{crypto.quote.USD.percent_change_24h.toFixed(2)}%</TableCell>
-              <TableCell>{crypto.quote.USD.percent_change_7d.toFixed(2)}%</TableCell>
+              <TableCell
+                className={`${
+                  crypto.quote.USD.percent_change_24h < 0
+                    ? 'text-red-500'
+                    : crypto.quote.USD.percent_change_24h > 0
+                      ? 'text-[#6DFFDC]'
+                      : 'text-gray-500'
+                }`}>
+                +{crypto.quote.USD.percent_change_24h.toFixed(2)}%
+              </TableCell>
+              <TableCell
+                className={`${
+                  crypto.quote.USD.percent_change_7d < 0
+                    ? 'text-red-500'
+                    : crypto.quote.USD.percent_change_7d > 0
+                      ? 'text-[#6DFFDC]'
+                      : 'text-gray-500'
+                }`}>
+                {crypto.quote.USD.percent_change_7d < 0 ? '-' : null}$
+                {Math.abs(crypto.quote.USD.percent_change_7d).toFixed(2)}
+              </TableCell>
 
               <TableCell className="flex justify-end">
                 <Button className="w-1/2 rounded-none bg-green-500 text-gray-900 hover:bg-green-500/80">TRADE</Button>
