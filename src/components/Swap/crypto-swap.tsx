@@ -71,6 +71,8 @@ export default function CryptoSwap() {
               <Input
                 type="number"
                 placeholder="0.00"
+                min={0}
+                step={0.01}
                 className="h-28 rounded-md border-none bg-[#1E1E1E] pl-5 text-4xl font-bold text-white focus-visible:border-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0"
                 value={payValue}
                 onChange={handlePayChange}
@@ -89,6 +91,8 @@ export default function CryptoSwap() {
               <Input
                 type="number"
                 placeholder="0.00"
+                min={0}
+                step={0.01}
                 className="h-28 rounded-md border-none bg-[#1E1E1E] pl-5 text-4xl text-white focus-visible:border-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0"
                 value={receiveValue}
                 onChange={handleReceiveChange}
