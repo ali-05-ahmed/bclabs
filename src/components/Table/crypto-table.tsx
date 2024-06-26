@@ -138,8 +138,8 @@ export default function CryptoTable() {
                     crypto.quote.USD.percent_change_24h < 0
                       ? 'text-red-500'
                       : crypto.quote.USD.percent_change_24h > 0
-                      ? 'text-[#6DFFDC]'
-                      : 'text-gray-500'
+                        ? 'text-[#6DFFDC]'
+                        : 'text-gray-500'
                   }`}>
                   {crypto.quote.USD.percent_change_24h < 0 ? '' : '+'}
                   {crypto.quote.USD.percent_change_24h.toFixed(2)}%
@@ -149,15 +149,15 @@ export default function CryptoTable() {
                     crypto.quote.USD.percent_change_7d < 0
                       ? 'text-red-500'
                       : crypto.quote.USD.percent_change_7d > 0
-                      ? 'text-[#6DFFDC]'
-                      : 'text-gray-500'
+                        ? 'text-[#6DFFDC]'
+                        : 'text-gray-500'
                   }`}>
-                  {crypto.quote.USD.percent_change_7d < 0 ? '-' : '+'}
-                  ${Math.abs(crypto.quote.USD.percent_change_7d).toFixed(2)}
+                  {crypto.quote.USD.percent_change_7d < 0 ? '-' : '+'}$
+                  {Math.abs(crypto.quote.USD.percent_change_7d).toFixed(2)}
                 </TableCell>
 
-                <TableCell className="hidden sm:flex justify-end">
-                  <Button className="w-full sm:w-1/2 rounded-none bg-green-500 text-gray-900 hover:bg-green-500/80">
+                <TableCell className="hidden justify-end sm:flex">
+                  <Button className="w-full rounded-none bg-green-500 text-gray-900 hover:bg-green-500/80 sm:w-1/2">
                     TRADE
                   </Button>
                 </TableCell>
