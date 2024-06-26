@@ -57,7 +57,7 @@ export default function CryptoSwap() {
   };
 
   return (
-    <Card className="my-16 w-[800px] border-[#464646] bg-transparent">
+    <Card className="my-16 border-[#464646] bg-transparent lg:w-[800px]">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-xl text-white">SWAP TOKENS</CardTitle>
@@ -66,7 +66,7 @@ export default function CryptoSwap() {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col items-center justify-center gap-5">
-          <div className="flex gap-0.5">
+          <div className="flex flex-col gap-0.5 lg:flex-row">
             <div className="relative flex items-center gap-4">
               <Input
                 type="number"
@@ -111,14 +111,14 @@ export default function CryptoSwap() {
           <Button
             variant={'default'}
             size={'lg'}
-            className="w-1/4 rounded-lg rounded-bl-none rounded-tr-none bg-purple-600 text-white hover:bg-purple-600/80">
+            className="w-full rounded-lg rounded-bl-none rounded-tr-none bg-purple-600 text-white hover:bg-purple-600/80 lg:w-1/4">
             Swap
           </Button>
         </div>
-        <div className="flex items-center justify-between">
+        <div className="my-2 flex flex-col items-center justify-center lg:flex-row lg:justify-between">
           <div>
             <p className="text-white">1 BTC = {btcToUsd && bnbToUsd ? (btcToUsd / bnbToUsd).toFixed(4) : '0.00'} BNB</p>
-            <p className="text-sm text-blue-600">Free exchange</p>
+            <p className="text-center text-sm text-blue-600 lg:text-left">Free exchange</p>
           </div>
           <p className="text-sm text-gray-400">Updated 4s ago</p>
         </div>

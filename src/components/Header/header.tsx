@@ -1,15 +1,16 @@
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import MobileNav from './mobile-nav';
 
 //
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 flex h-[60px] w-full items-center justify-center text-white backdrop-blur">
       <div className="container flex w-full max-w-6xl items-center justify-between px-4">
-        <div className="hidden justify-start sm:flex sm:flex-1">Blockchain</div>
-        <MainNav />
-        <div className="flex flex-1 justify-end">
+        <div className="justify-start sm:flex sm:flex-1">Blockchain</div>
+        <MainNavLinks />
+        <div className="hidden flex-1 justify-end lg:flex">
           <nav className="flex items-center space-x-4">
             <Link
               href=""
@@ -29,14 +30,17 @@ export function SiteHeader() {
             </Link>
           </nav>
         </div>
+        <div className="block lg:hidden">
+          <MobileNav />
+        </div>
       </div>
     </header>
   );
 }
 
-export function MainNav() {
+export function MainNavLinks() {
   return (
-    <nav className="text- flex items-center justify-center gap-6">
+    <nav className="hidden items-center justify-center gap-6 lg:flex">
       <Link href="/" className="">
         Exchange
       </Link>
